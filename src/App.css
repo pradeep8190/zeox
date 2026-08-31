@@ -1,0 +1,32 @@
+/* App.css - Curtain Reveal Overlay Architecture */
+
+.app-main {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  overflow: clip;
+}
+
+/* 1. Sticky Hero Background Layer */
+.hero-curtain-wrapper {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  will-change: transform, opacity;
+  transform-origin: center top;
+  transition: transform 0.05s linear, opacity 0.05s linear;
+}
+
+/* 2. Foreground Curtain Layer (Slides UP and overlaps over the Hero) */
+.curtain-reveal-layer {
+  position: relative;
+  z-index: 10;
+  background: #000000;
+  box-shadow: 0 -30px 80px rgba(0, 0, 0, 0.98), 0 -1px 0 rgba(255, 255, 255, 0.12);
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  overflow: hidden;
+}

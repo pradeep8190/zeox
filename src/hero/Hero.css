@@ -1,0 +1,411 @@
+.hero-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000000 0%, #040404 30%, #090909 55%, #040404 85%, #000000 100%);
+  padding: 0 1.5rem;
+}
+
+/* Central Hero Content Block */
+.hero-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Top Announcement Badge - Futuristic Transparent Glass with Interactive Hover (z-index: 10) */
+.hero-badge {
+  position: relative;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 9999px;
+  padding: 0.35rem 0.95rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #e4e4e7;
+  margin-bottom: 0.15rem;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  animation: badgeLandingReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.hero-badge:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.12);
+}
+
+.badge-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-dot-ping {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-badge:hover .badge-dot-ping {
+  animation: badgePing 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes badgePing {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.badge-title {
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hero-badge:hover .badge-title {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.badge-divider {
+  width: 1px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background 0.3s ease;
+}
+
+.hero-badge:hover .badge-divider {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.badge-sub {
+  color: #a1a1aa;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.hero-badge:hover .badge-sub {
+  color: #f4f4f5;
+}
+
+/* Micro Action Reveal on Hover */
+.badge-action-reveal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-8px);
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.badge-arrow-icon {
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-badge:hover .badge-action-reveal {
+  max-width: 75px;
+  opacity: 1;
+  transform: translateX(0);
+  margin-left: 0.35rem;
+}
+
+.hero-badge:hover .badge-arrow-icon {
+  transform: translate(2px, -1px);
+}
+
+/* Shimmer Light Beam that sweeps on hover */
+.badge-shimmer-beam {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.16) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: left 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-badge:hover .badge-shimmer-beam {
+  left: 160%;
+}
+
+/* Main Heading - Clean Ubuntu Sans 400 with Glow-Merged Landing Reveal (z-index: 10) */
+.hero-title {
+  position: relative;
+  z-index: 10;
+  font-family: 'Ubuntu Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.6rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f4f4f5;
+  margin-bottom: 1.4rem;
+  text-wrap: balance;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 255, 255, 0.08);
+  animation: titleLandingReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+/* Subheading - Crisp Muted Silver with Inner Depth behind Silk (z-index: 2) */
+.hero-subtitle {
+  position: relative;
+  z-index: 2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: #a1a1aa;
+  max-width: 620px;
+  margin: 0 auto;
+  text-wrap: balance;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6);
+  animation: subtitleLandingReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+/* CTA Button Group - Inner Layer behind Silk (z-index: 2) */
+.hero-cta-group {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  animation: ctaLandingReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+/* Atmospheric Glow-Merged Landing Entrance Keyframes */
+@keyframes badgeLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.95);
+    filter: blur(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes titleLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+    filter: blur(20px);
+    text-shadow: 0 0 50px rgba(248, 250, 252, 0.6), 0 0 80px rgba(241, 245, 249, 0.35);
+  }
+  60% {
+    text-shadow: 0 0 35px rgba(248, 250, 252, 0.3), 0 4px 28px rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+    text-shadow: 0 4px 28px rgba(0, 0, 0, 0.9), 0 0 35px rgba(248, 250, 252, 0.08);
+  }
+}
+
+@keyframes subtitleLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+@keyframes ctaLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.95);
+    filter: blur(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Liquid Glass Primary Button - Pure Transparent with Liquid Reflection */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.8rem 1.85rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.32),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35),
+    0 8px 32px -4px rgba(0, 0, 0, 0.45);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 2px 14px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 9999px 9999px 0 0;
+  pointer-events: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 2px 0 rgba(0, 0, 0, 0.35),
+    0 12px 36px -4px rgba(0, 0, 0, 0.5),
+    0 0 24px rgba(142, 197, 252, 0.2);
+  color: #ffffff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+/* Liquid Glass Secondary Button - Pure Transparent with Soft Liquid Reflection */
+.btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.015) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  color: #ffffff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.8rem 1.85rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 1.5px 0 rgba(0, 0, 0, 0.3),
+    0 6px 24px -4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 2px 14px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 35%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 100%);
+  border-radius: 9999px 9999px 0 0;
+  pointer-events: none;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1.5px 0 rgba(0, 0, 0, 0.3),
+    0 10px 30px -4px rgba(0, 0, 0, 0.45);
+  color: #ffffff;
+}
+
+.btn-arrow {
+  color: #ffffff;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover .btn-arrow {
+  transform: translateX(3px);
+}

@@ -1,0 +1,155 @@
+.navbar-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.25rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  background: transparent;
+  border: none;
+  animation: navLandingReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+@keyframes navLandingReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px);
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+/* Left Group: Logo + Dynamic Expanding Links */
+.nav-left-group {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  transition: gap 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Nav Link with Smooth Expanding Arrow */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 450;
+  letter-spacing: 0.01em;
+  color: #94a3b8;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+/* Hidden Arrow that smoothly emerges & pushes sibling links */
+.nav-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(-6px) scale(0.8);
+  margin-left: 0;
+  overflow: hidden;
+  color: #ffffff;
+  transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              margin-left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link-arrow svg {
+  flex-shrink: 0;
+}
+
+/* Hover state on link */
+.nav-link:hover {
+  color: #ffffff;
+}
+
+.nav-link:hover .nav-link-arrow {
+  max-width: 20px;
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  margin-left: 6px;
+}
+
+/* Right Group: 2 Action Buttons */
+.nav-right-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.nav-btn-ghost {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #cbd5e1;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn-ghost:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.nav-btn-primary {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: #ffffff;
+  color: #01080c;
+  border: 1px solid #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.45rem 1.1rem;
+  border-radius: 9999px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn-primary:hover {
+  background: #e2e8f0;
+  border-color: #e2e8f0;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.12);
+}
+
+/* Mobile responsive */
+@media (max-width: 860px) {
+  .navbar-header {
+    padding: 1rem 1rem;
+  }
+  .nav-links {
+    display: none;
+  }
+}

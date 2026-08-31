@@ -1,0 +1,163 @@
+/* PreFooter.css - Ultra-Minimal Apple-level luxury styling */
+
+.prefooter-section {
+  position: relative;
+  width: 100%;
+  padding: 4rem 2rem 6rem;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.prefooter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.prefooter-title {
+  font-family: 'Ubuntu Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  color: #f4f4f5;
+  margin-bottom: 1rem;
+}
+
+.prefooter-subtitle {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.25vw, 1.1rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: #a1a1aa;
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+/* Minimal Code Pill */
+.prefooter-code-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 9999px;
+  padding: 0.4rem 0.5rem 0.4rem 1.2rem;
+  margin-bottom: 2rem;
+  transition: border-color 0.3s ease;
+}
+
+.prefooter-code-pill:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.code-text {
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.85rem;
+  color: #e4e4e7;
+  letter-spacing: -0.01em;
+}
+
+.code-copy-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 0.3rem 0.85rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Action Group */
+.prefooter-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.prefooter-actions .btn-primary {
+  height: 44px;
+  padding: 0 1.6rem;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.prefooter-actions .btn-primary:hover {
+  background: #e4e4e7;
+  transform: translateY(-1px);
+}
+
+.prefooter-actions .btn-secondary {
+  height: 44px;
+  padding: 0 1.6rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e4e4e7;
+  backdrop-filter: blur(20px);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+}
+
+.prefooter-actions .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-arrow {
+  transition: transform 0.25s ease;
+}
+
+.btn-secondary:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .prefooter-section {
+    padding: 6rem 1.5rem;
+  }
+
+  .prefooter-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .prefooter-actions .btn-primary,
+  .prefooter-actions .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

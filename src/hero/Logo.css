@@ -1,0 +1,72 @@
+.logo-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Nav Compact Variant - Snug bounding box for exact symmetrical link spacing */
+.logo-wrapper.nav-size {
+  width: 66px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: visible;
+}
+
+.logo-wrapper.nav-size .logo-container {
+  transform: scale(0.28);
+  transform-origin: left center;
+  margin-left: -1.1rem;
+  flex-shrink: 0;
+}
+
+/* Master Logo Proportions (1:1 with official design) */
+.logo-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 4rem;
+}
+
+/* Earth-like glowing horizon arc */
+.horizon-arc {
+  position: absolute;
+  top: 0.2rem;
+  width: 130%;
+  height: 75px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.logo-text {
+  font-family: 'Reospec', sans-serif;
+  font-size: 5.5rem;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+}
+
+.logo-text .x-char {
+  margin-left: -0.05em;
+}
+
+/* Ambient glow backdrop behind the center */
+.ambient-glow {
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 240px;
+  height: 65px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.07) 0%, rgba(200, 220, 255, 0.02) 45%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: 1;
+}

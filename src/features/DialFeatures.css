@@ -1,0 +1,421 @@
+/* DialFeatures.css - Precision Flex Layout Match */
+
+.dial-features-track {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Ubuntu Sans', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+.dial-features-sticky {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background: #000000;
+  z-index: 10;
+}
+
+/* ================= RIGHT SIDE: DIAL IMAGE & 4 POINTS ================= */
+.feature-right-dial {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 62vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.dial-img-static {
+  height: 112vh;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  object-position: right center;
+}
+
+.feature-right-dial::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 35%;
+  background: linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* SVG Overlay for Points & Joining Arc */
+.dial-points-svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  z-index: 3;
+}
+
+.dial-guide-arc {
+  transition: opacity 0.3s ease;
+}
+
+.dial-active-beam {
+  transition: stroke-dashoffset 0.15s cubic-bezier(0.1, 0.6, 0.2, 1);
+  will-change: stroke-dashoffset;
+}
+
+.dial-point-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.point-dot {
+  transition: all 0.3s ease;
+}
+
+.dial-point-node:hover .point-dot {
+  r: 8px;
+  fill: #ffffff;
+}
+
+.point-pulse-ring {
+  animation: pointPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.point-pulse-outer {
+  animation: pointPulseOuter 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes pointPulse {
+  0% {
+    r: 10px;
+    opacity: 0.8;
+  }
+  100% {
+    r: 22px;
+    opacity: 0;
+  }
+}
+
+@keyframes pointPulseOuter {
+  0% {
+    r: 16px;
+    opacity: 0.5;
+  }
+  100% {
+    r: 30px;
+    opacity: 0;
+  }
+}
+
+.point-label {
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+/* ================= LEFT FEATURE CARD ================= */
+.dial-features-container {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 0 4rem;
+  box-sizing: border-box;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.feature-left-card {
+  position: relative;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+/* Vertical Crosshair Line */
+.crosshair-v-line {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  bottom: 60px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.32);
+  z-index: 1;
+}
+
+.crosshair-v-line::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.crosshair-v-line::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* 1. Number Container (70% visible height) */
+.feature-number-container {
+  height: 85px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  z-index: 2;
+  margin-left: 0.5rem;
+}
+
+.feature-number {
+  font-size: 9.5rem;
+  font-weight: 700;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.48);
+  letter-spacing: -0.05em;
+  display: inline-block;
+  animation: numFadeIn 0.35s ease-out forwards;
+}
+
+@keyframes numFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Top Horizontal Line */
+.crosshair-h-line-top {
+  position: relative;
+  left: -44px;
+  width: calc(100% + 44px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.32);
+  z-index: 4;
+}
+
+.crosshair-h-line-top::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* 2. Content Body */
+.feature-content-body {
+  position: relative;
+  z-index: 3;
+  padding-top: 1.2rem;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 460px;
+  animation: contentFadeIn 0.35s ease-out forwards;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-title {
+  font-size: clamp(2rem, 3.2vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.feature-description {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0.2rem 0 0.3rem 0;
+}
+
+.feature-category-row {
+  margin-top: 0.2rem;
+}
+
+.feature-category-label {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+}
+
+/* Bottom Horizontal Line */
+.crosshair-h-line-bottom {
+  position: relative;
+  left: -44px;
+  width: calc(100% + 44px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.32);
+  margin-top: 1.5rem;
+  margin-bottom: 1.8rem;
+  z-index: 4;
+}
+
+.crosshair-h-line-bottom::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+/* 3. Bottom 3 Icon Pillars */
+.feature-pillars-grid {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: flex-start;
+  gap: 2.2rem;
+  margin-left: 0.5rem;
+}
+
+.pillar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 95px;
+  text-align: center;
+}
+
+.pillar-icon-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  transition: all 0.25s ease;
+}
+
+.pillar-item:hover .pillar-icon-badge {
+  border-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.06);
+}
+
+.pillar-label {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.25;
+}
+
+/* Step Navigation Bar */
+.step-navigation-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: 0.5rem;
+  margin-top: 1.4rem;
+  z-index: 10;
+}
+
+.step-nav-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.step-nav-line {
+  width: 18px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.25s ease;
+}
+
+.step-nav-btn:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.step-nav-btn.active {
+  color: #ffffff;
+}
+
+.step-nav-btn.active .step-nav-line {
+  width: 36px;
+  background: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dial-features-container {
+    padding: 0 2rem;
+  }
+
+  .feature-left-card {
+    width: 100%;
+  }
+
+  .feature-right-dial {
+    width: 80vw;
+    opacity: 0.25;
+  }
+}
